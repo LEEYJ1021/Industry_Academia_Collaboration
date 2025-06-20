@@ -94,9 +94,12 @@ Each step in the LangGraph workflow represents a distinct **stateful agentic nod
   ```
 
   **Available Strategies:**
-  - Consensus-Driven  
-  - Exploratory-Brainstorming  
-  - Greedy-Exploitation  
+  - Consensus-Driven
+  Focus on mediating differences between the two experts to find common ground and reach a consensus-based conclusion.
+  - Exploratory-Brainstorming
+  Identify the idea with the most immediate commercial potential and delve deeply into it.
+  - Greedy-Exploitation
+  The ultimate goal of the meeting is to specifically identify the 'single most critical academic research field' that needs to be brought in from the outside to enable the technology fusion. Ensure the Action Items clearly reflect this.
 
 ---
 
