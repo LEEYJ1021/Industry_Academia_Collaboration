@@ -149,7 +149,8 @@ The system adapts to context and performance through conditional nodes:
   - `GOOGLE_API_KEY`
   - `LANGCHAIN_API_KEY`
 
-- **Input Data Files**: Place the following pre-analyzed patent JSON files in the working directory + Releases(description):
+- **Input Data Files**: Place the following pre-analyzed patent JSON files in the ./patent_analysis_results_.../ directory.
+These files are also included in the Releases section, which contains detailed descriptions:
 
 ```
 ./patent_analysis_results_.../
@@ -170,7 +171,7 @@ The system adapts to context and performance through conditional nodes:
    - **Meeting Strategy Choice**: Define simulation strategy
    - **Feedback Integration**: Review and refine iterations
 
-2. **Final Output.json (Releases)**  
-   The complete R&D proposal will be saved in the working directory.
+2. **Final Output.json**  
+   The complete R&D proposal will be saved as Final_Output.json in the Releases section for your convenience, along with additional documentation.
 
 ---
