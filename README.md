@@ -135,17 +135,17 @@ Each step in the LangGraph workflow represents a distinct **stateful agentic nod
 - **Output:**  
   Produces a structured `MeetingEvaluation` JSON object containing:  
   ```json
-{
-  "clarity_score": 0.0,
-  "actionability_score": 0.0,
-  "alignment_score": 0.0,
-  "qualitative_feedback": {
-    "clarity": "Provide clear explanations for conclusions and action items.",
-    "actionability": "Action items should be specific and feasible to implement.",
-    "alignment": "Ensure the results directly reflect the original agenda and goals."
-  },
-  "future_metrics_suggestion": "Consider BLEU for linguistic accuracy, ROUGE for content coverage, and BERTScore for semantic similarity to evaluate meeting logs automatically."
-}
+  {
+    "clarity_score": 0.0,
+    "actionability_score": 0.0,
+    "alignment_score": 0.0,
+    "qualitative_feedback": {
+      "clarity": "Provide clear explanations for conclusions and action items.",
+      "actionability": "Action items should be specific and feasible to implement.",
+      "alignment": "Ensure the results directly reflect the original agenda and goals."
+    },
+    "future_metrics_suggestion": "Consider BLEU for linguistic accuracy, ROUGE for content coverage, and BERTScore for semantic similarity to evaluate meeting logs automatically."
+  }
 
 
 ---
