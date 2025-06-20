@@ -6,6 +6,8 @@ This repository demonstrates a **LangGraph-based workflow** designed for dynamic
 
 The workflow builds upon modular components to create a robust, cyclic graph system that handles real-time feedback, ensuring efficiency in complex, multi-stage processes.
 
+![Workflow Visualization](main/LangGraph.png)
+
 ---
 
 ## Features
