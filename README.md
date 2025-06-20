@@ -113,9 +113,40 @@ Each step in the LangGraph workflow represents a distinct **stateful agentic nod
   - `evaluate_convergence_meeting`  
   - `collect_convergence_feedback`  
   - `refine_and_critique`  
+
 - **Description**:  
-  Evaluates the simulated meeting outcome using automated scoring and feedback generation.  
-  If the outcome does not meet quality standards, critique is generated, and the proposal is revised.
+  Evaluates the simulated meeting outcome using automated scoring and structured feedback generation based on the following criteria:  
+
+  1. **Clarity Score (0.0–10.0):**  
+     Measures how clear and understandable the conclusions and action items are.  
+
+  2. **Actionability Score (0.0–10.0):**  
+     Assesses how specific and realistically executable the action items are.  
+
+  3. **Alignment Score (0.0–10.0):**  
+     Evaluates how well the results align with the original agenda and goals.  
+
+  4. **Qualitative Feedback:**  
+     Provides detailed reasons for each score. If a score is low, suggests actionable improvements.  
+
+  5. **Future Metrics Suggestion:**  
+     Recommends potential NLP evaluation metrics (e.g., BLEU, ROUGE, BERTScore) to enable automatic and precise quality measurement of meeting logs, including rationale for their selection.  
+
+- **Output:**  
+  Produces a structured `MeetingEvaluation` JSON object containing:  
+  ```json
+  {
+    "clarity_score": float,
+    "actionability_score": float,
+    "alignment_score": float,
+    "qualitative_feedback": {
+      "clarity": string,
+      "actionability": string,
+      "alignment": string
+    },
+    "future_metrics_suggestion": string
+  }
+
 
 ---
 
