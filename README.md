@@ -51,15 +51,15 @@ Through iterative feedback loops, conditional routing, and expert evaluations, t
    The strategy selection cycles through specific technology code combinations with the following convergence meeting strategies:  
    - **Code Combinations & Strategies**  
      - `B60R21_B60R23`  
-     - `B60R23_G01S7_`  
+     - `B60R23_G01S7`  
      - `B60R23_Y02T10`  
      - `B61L25_G06Q50`  
-     - `G01C23_G01C5_`  
+     - `G01C23_G01C5`  
      - `G06F16_H04W12`  
-     - `G07C5__H04M1_`  
-     - `G08G5__H04L20`  
-     - `H04B7__H04L20`  
-     - `H04L67_H04R3_`  
+     - `G07C5_H04M1`  
+     - `G08G5_H04L20`  
+     - `H04B7_H04L20`  
+     - `H04L67_H04R3`  
 
    Each is explored sequentially using the strategy set:  
    - **Consensus-Driven**  
