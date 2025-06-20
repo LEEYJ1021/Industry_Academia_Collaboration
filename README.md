@@ -170,7 +170,7 @@ The system adapts to context and performance through conditional nodes:
    - **Meeting Strategy Choice**: Define simulation strategy
    - **Feedback Integration**: Review and refine iterations
 
-2. **Final Output**  
+2. **Final Output.json**  
    The complete R&D proposal will be saved in the working directory.
 
 ---
