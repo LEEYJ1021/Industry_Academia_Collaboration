@@ -7,7 +7,7 @@ This repository demonstrates a **LangGraph-based workflow** engineered for **dyn
 
 The workflow features **expert-driven approvals**, **iterative feedback loops**, and **conditional routing**, facilitating strategic R&D planning through virtual collaboration scenarios. A visual overview of this dynamic pipeline is presented below:
 
-![Workflow Visualization](LangGraph.png)
+![Workflow Visualization](LangGraph (1).png)
 ---
 
 ## Features
