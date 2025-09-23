@@ -439,6 +439,17 @@ This enabled capturing both **processing efficiency** and **computational load**
 
 ---
 
+![FigA1.png](FigA1.png)
+**Fig. A.1.** Node-Level Execution Time Distribution Across Adaptive Multi-LLM Simulations
+
+---
+
+![FigA2.png](FigA2.png)
+**Fig. A.2.** Distribution of Input, Output, and Total Token Usage Across Agent Nodes
+
+---
+
+
 ## Appendix B: Detailed Performance Data
 This appendix contains supplementary tables that provide **granular performance data**, supporting the analysis in **Section 6.1.4** and **Section 6.1.5**.
 
@@ -497,6 +508,11 @@ This appendix contains supplementary tables that provide **granular performance 
 | EVALUATE_MEETING_OUTCOME_NODE | 0.32 | 0.09 | 75.75 | 0.07 |
 | SYNTHESIZE_FINAL_REPORT_NODE | 2.29 | 0.09 | 244.25 | 0.06 |
 | GENERATE_ARXIV_QUERY_NODE | 0.08 | 0.07 | 10.00 | 0.02 |
+
+---
+
+![FigB1.png](FigB1.png)
+**Fig. B.1.** Comparative Analysis of Node Performance Variability (CV)  
 
 ---
 
