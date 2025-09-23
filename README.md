@@ -221,7 +221,7 @@ The analysis yielded **r = 0.899 (p = 0.0059)**, confirming that more token-inte
 - **Efficient Outlier**: `generate_arxiv_query_node`, which showed low execution time despite non-trivial token usage.  
 
 ![Fig1.png](Fig1.png)
-**Fig. 11.** Correlation Between Token Usage and Execution Time Across Simulation Nodes  
+**Fig. 1.** Correlation Between Token Usage and Execution Time Across Simulation Nodes  
 
 ---
 
