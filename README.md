@@ -220,6 +220,7 @@ The analysis yielded **r = 0.899 (p = 0.0059)**, confirming that more token-inte
 - **Bottlenecks Identified**: `synthesize_final_report_node`, `execute_arxiv_search_and_create_persona_node`.  
 - **Efficient Outlier**: `generate_arxiv_query_node`, which showed low execution time despite non-trivial token usage.  
 
+![Fig1.png](Fig1.png)
 **Fig. 11.** Correlation Between Token Usage and Execution Time Across Simulation Nodes  
 
 ---
@@ -259,7 +260,8 @@ Stability Score = 1 / CV
 - **High Variability**: `execute_arxiv_search_and_create_persona_node (CV = 0.82)`, `collect_convergence_feedback_node (CV = 0.62)`.  
 - **Low Variability**: `generate_arxiv_query_node (CV = 0.07)`, `synthesize_final_report_node (CV = 0.09)`.  
 
-**Fig. 12.** Node Performance Stability Categorized by Execution Time Variability  
+![Fig2.png](Fig2.png)
+**Fig. 2.** Node Performance Stability Categorized by Execution Time Variability  
 
 **Table 1. Node-Level Performance Stability**  
 
@@ -288,7 +290,8 @@ Token Share (%) = (Mean Total Tokens × n) / Σ(Mean Total Tokens × n) × 100
 - Top 3 nodes consumed **61.5% of execution time**.  
 - Optimizing top 3 nodes by 20% → **12.3% improvement overall**.  
 
-**Fig. 13.** Distribution of Computational Load: Total Execution Time Share and Token Share  
+![Fig3.png](Fig3.png)
+**Fig. 3.** Distribution of Computational Load: Total Execution Time Share and Token Share  
 
 **Table 2. Performance Improvement Potential (20% Reduction in Top 3 Nodes)**  
 
@@ -314,7 +317,8 @@ Complexity Score = Z(mean_total) + Z(token_cv)
 **Formula 12. Efficiency Score**  
 Efficiency Score = -Z(time_per_token)
 
-**Fig. 14.** Node Efficiency vs. Complexity Analysis  
+![Fig4.png](Fig4.png)
+**Fig. 4.** Node Efficiency vs. Complexity Analysis  
 
 ---
 
