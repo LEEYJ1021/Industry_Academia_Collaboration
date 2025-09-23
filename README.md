@@ -451,7 +451,7 @@ This enabled capturing both **processing efficiency** and **computational load**
 
 
 ## Appendix B: Detailed Performance Data
-This appendix contains supplementary tables that provide **granular performance data**, supporting the analysis in **Section 6.1.4** and **Section 6.1.5**.
+This appendix contains supplementary tables that provide **granular performance data**, supporting the analysis in **Section 6.4** and **Section 6.5**.
 
 ---
 
