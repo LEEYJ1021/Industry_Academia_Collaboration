@@ -186,73 +186,175 @@ The system adapts to context and performance through conditional nodes:
 
 ---
 
-# 6. Experimental Evaluation and Performance Analysis
+# 6. Experimental Evaluation and Performance Analysis  
 
 ## 6.1. Experimental Design and Setup  
-- **30 simulations** conducted using 10 high-potential technology convergence pairs.  
-- **3 meeting facilitation strategies** tested:  
-  - **Consensus-Driven**: focuses on agreement.  
-  - **Greedy-Exploitation**: prioritizes short-term high-impact actions.  
-  - **Exploratory-Brainstorming**: fosters diverse ideas without immediate consensus.  
+To rigorously assess the framework, **30 independent end-to-end simulations** were performed. These were derived from **10 high-potential technology convergence pairs**, with each pair being simulated three times using one of three distinct meeting facilitation strategies:  
+
+- **Consensus-Driven**: Focuses on achieving mutual agreement.  
+- **Greedy-Exploitation**: Prioritizes short-term, high-impact actions.  
+- **Exploratory-Brainstorming**: Fosters diverse, innovative ideas without immediate consensus pressure.  
 
 ---
 
 ## 6.2. Simulation Environment and Implementation  
-- **Model**: Qwen LLM (local HPC deployment).  
-- **Hardware**: 8-core Intel Xeon, 4× V100 GPUs, 128GB RAM, 2TB NVMe SSD.  
-- **Software**: Python 3.8, PyTorch 1.12, Sentence-Transformers 2.2.2, Neo4j 4.4.11.  
-- **Execution setup**:  
-  - Batch size: 64  
-  - Parallel threads: 16 workers + 4 I/O  
+- **Model**: Qwen Large Language Model (hosted locally).  
+- **Hardware**: 8-core Intel Xeon E5-2690 CPU, 4× NVIDIA Tesla V100 GPUs (32GB VRAM each), 128GB DDR4 RAM, 2TB NVMe SSD.  
+- **Software**: Ubuntu 20.04 LTS, Python 3.8.12, PyTorch 1.12.0, Sentence-Transformers 2.2.2, Neo4j 4.4.11.  
+- **Execution Setup**:  
+  - Inference batch size: 64  
+  - Parallel execution: 16 worker threads + 4 I/O threads  
   - 5 random seeds for robustness  
-- **Metrics tracked**: execution time per node, token usage, and variance (<3%).  
+- **Metrics Tracked**: Execution time and token consumption were recorded for each node. Variance in CPU and GPU utilization across runs was maintained at <3%.  
 
 ---
 
-## 6.3. Token Usage–Execution Time Correlation  
-- **Pearson correlation**: **r = 0.899, p = 0.0059**.  
-- Strong positive correlation → higher token usage → longer execution time.  
-- **Bottlenecks**:  
-  - `synthesize_final_report_node`  
-  - `execute_arxiv_search_and_create_persona_node`  
-- **Efficient outlier**: `generate_arxiv_query_node`.  
+## 6.3. Performance Analysis: Token Usage and Execution Time Correlation  
+A strong positive correlation was observed between token usage and execution time. To quantify this linear relationship, **Pearson’s product-moment correlation coefficient** was used.  
+
+**Formula 1. Pearson Correlation Coefficient**  
+\[
+r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}}
+\]
+
+The analysis yielded **r = 0.899 (p = 0.0059)**, confirming that more token-intensive tasks require longer computation times.  
+
+- **Bottlenecks Identified**: `synthesize_final_report_node`, `execute_arxiv_search_and_create_persona_node`.  
+- **Efficient Outlier**: `generate_arxiv_query_node`, which showed low execution time despite non-trivial token usage.  
+
+**Fig. 11.** Correlation Between Token Usage and Execution Time Across Simulation Nodes  
 
 ---
 
-## 6.4. Node-Level Performance Analysis  
-**Efficiency metrics:**  
-- **Token Efficiency** (output/input ratio): High = `synthesize_final_report_node (0.88)`; Low = `generate_arxiv_query_node (0.09)`.  
-- **Processing Efficiency** (time per token): Fastest = `generate_arxiv_query_node (1.85 ms/token)`; Slowest = `execute_arxiv_search_and_create_persona_node (12.36 ms/token)`.  
-- **Output Productivity** (tokens/sec): Highest = `simulate_industry_academia_collaboration_node (72.78)`; Lowest = `execute_arxiv_search_and_create_persona_node (10.19)`.  
+## 6.4. Detailed Performance Analysis: Efficiency, Stability, and Bottlenecks  
 
-**Stability (CV of execution time):**  
-- **High variability**: `execute_arxiv_search_and_create_persona_node`, `collect_convergence_feedback_node`.  
-- **Low variability**: `generate_arxiv_query_node`, `synthesize_final_report_node`.  
+### Efficiency Metrics  
 
-**Resource bottlenecks:**  
+**Formula 2. Token Efficiency Ratio**  
+\[
+\text{Token Efficiency Ratio} = \frac{\text{Mean Output Tokens}}{\text{Mean Input Tokens}}
+\]
+
+**Formula 3. Time per Token**  
+\[
+\text{Time per Token (s)} = \frac{\text{Mean Execution Time}}{\text{Mean Total Tokens}}
+\]
+
+**Formula 4. Output Productivity**  
+\[
+\text{Output Productivity (Tokens/s)} = \frac{\text{Mean Output Tokens}}{\text{Mean Execution Time}}
+\]
+
+**Key Findings:**  
+- **Token Efficiency**: `synthesize_final_report_node` high (0.88), `generate_arxiv_query_node` low (0.09).  
+- **Processing Efficiency**: Fastest = `generate_arxiv_query_node (1.85 ms/token)`; Slowest = `execute_arxiv_search_and_create_persona_node (12.36 ms/token)`.  
+- **Output Productivity**: Highest = `simulate_industry_academia_collaboration_node (72.78 tokens/s)`; Lowest = `execute_arxiv_search_and_create_persona_node (10.19 tokens/s)`.  
+
+---
+
+### Stability Analysis  
+
+**Formula 5. Interquartile Range (IQR)**  
+\[
+IQR = Q3 - Q1
+\]
+
+**Formula 6. Coefficient of Variation (CV)**  
+\[
+CV = \frac{IQR}{Median}
+\]
+
+**Formula 7. Stability Score**  
+\[
+\text{Stability Score} = \frac{1}{CV}
+\]
+
+**Key Findings:**  
+- **High Variability**: `execute_arxiv_search_and_create_persona_node (CV = 0.82)`, `collect_convergence_feedback_node (CV = 0.62)`.  
+- **Low Variability**: `generate_arxiv_query_node (CV = 0.07)`, `synthesize_final_report_node (CV = 0.09)`.  
+
+**Fig. 12.** Node Performance Stability Categorized by Execution Time Variability  
+
+**Table 1. Node-Level Performance Stability**  
+
+| Node Name                                  | Mean Time (s) | Time CV | Stability Score | Stability Category   |
+|--------------------------------------------|---------------|---------|-----------------|----------------------|
+| execute_arxiv_search_and_create_persona_node | 21.85         | 0.82    | 1.21            | High Variability     |
+| collect_convergence_feedback_node           | 3.95          | 0.62    | 1.62            | High Variability     |
+| setup_analysis_environment_node             | 2.56          | 0.55    | 1.81            | High Variability     |
+| human_in_the_loop_expert_approval_node      | 2.67          | 0.53    | 1.88            | High Variability     |
+| simulate_industry_academia_collaboration_node | 4.72        | 0.15    | 6.68            | Moderate Variability |
+| synthesize_final_report_node                | 26.41         | 0.09    | 11.20           | Low Variability      |
+| generate_arxiv_query_node                   | 1.17          | 0.07    | 14.63           | Low Variability      |
+
+---
+
+### Bottleneck Identification  
+
+**Formula 8. Time Share (%)**  
+\[
+\text{Time Share} = \frac{\text{Mean Time} \times n}{\sum (\text{Mean Time} \times n)} \times 100
+\]
+
+**Formula 9. Token Share (%)**  
+\[
+\text{Token Share} = \frac{\text{Mean Total Tokens} \times n}{\sum (\text{Mean Total Tokens} \times n)} \times 100
+\]
+
+**Key Findings:**  
 - `synthesize_final_report_node`: **34.6% tokens, 29.3% time**.  
-- Top 3 nodes consume **61.5% total execution time**.  
-- Optimizing top 3 nodes by 20% → **12.3% overall improvement**.
+- Top 3 nodes consumed **61.5% of execution time**.  
+- Optimizing top 3 nodes by 20% → **12.3% improvement overall**.  
+
+**Fig. 13.** Distribution of Computational Load: Total Execution Time Share and Token Share  
+
+**Table 2. Performance Improvement Potential (20% Reduction in Top 3 Nodes)**  
+
+| Node Name                                  | Mean Time (s) | n  | Time Share (%) | Improvement Potential (s) | Time Savings (s) | Savings (%) |
+|--------------------------------------------|---------------|----|----------------|----------------------------|------------------|-------------|
+| synthesize_final_report_node                | 26.41         | 30 | 29.34          | 5.28                       | 158.46           | 5.87        |
+| execute_arxiv_search_and_create_persona_node | 21.85        | 30 | 24.28          | 4.37                       | 131.10           | 4.86        |
+| evaluate_meeting_outcome_node               | 3.55          | 60 | 7.89           | 0.71                       | 42.60            | 1.58        |
+| **Total**                                   |               |    | **61.51**      |                            | **332.16**       | **12.31**   |
 
 ---
 
-## 6.5. Optimization Strategy and Recommendations  
-1. **Prioritize bottlenecks**  
+## 6.5. Analysis-Driven Optimization Strategy and Recommendations  
+
+Composite scores were derived using z-score normalization.  
+
+**Formula 10. Z-score Normalization**  
+\[
+Z(x) = \frac{x - \mu}{\sigma}
+\]
+
+**Formula 11. Complexity Score**  
+\[
+\text{Complexity Score} = Z(\text{mean\_total}) + Z(\text{token\_cv})
+\]
+
+**Formula 12. Efficiency Score**  
+\[
+\text{Efficiency Score} = -Z(\text{time\_per\_token})
+\]
+
+**Fig. 14.** Node Efficiency vs. Complexity Analysis  
+
+---
+
+### Phased Optimization Plan  
+
+1. **Short-term (Stabilization)**  
+   - Retry logic, timeouts, async processing for high-variability nodes.  
+
+2. **Medium-term (Bottleneck Optimization)**  
    - Optimize `synthesize_final_report_node` (parallelization, incremental generation).  
-   - Refactor `execute_arxiv_search_and_create_persona_node` (caching, async processing).  
+   - Refactor `execute_arxiv_search_and_create_persona_node` (caching, async).  
    - Improve `evaluate_meeting_outcome_node`.  
 
-2. **Stabilize high-variability nodes**  
-   - Introduce **retry logic**, **timeouts**, **asynchronous processing**.  
-
-3. **Enhance token efficiency**  
-   - **Prompt engineering** for `generate_arxiv_query_node` (increase info density).  
-   - **Processing logic optimization** for `synthesize_final_report_node`.  
-
-**Phased plan:**  
-- **Short-term**: stabilize variability.  
-- **Medium-term**: optimize top bottlenecks.  
-- **Long-term**: improve token efficiency framework-wide.  
+3. **Long-term (Token Efficiency Improvement)**  
+   - Prompt engineering for `generate_arxiv_query_node` to increase info density.  
+   - Processing logic optimization for `synthesize_final_report_node`.  
 
 ---
 
