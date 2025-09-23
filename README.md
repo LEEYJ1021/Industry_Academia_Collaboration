@@ -213,9 +213,7 @@ To rigorously assess the framework, **30 independent end-to-end simulations** we
 A strong positive correlation was observed between token usage and execution time. To quantify this linear relationship, **Pearson’s product-moment correlation coefficient** was used.  
 
 **Formula 1. Pearson Correlation Coefficient**  
-\[
-r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}}
-\]
+r = Σ (xi - x̄)(yi - ȳ) / sqrt( Σ(xi - x̄)² * Σ(yi - ȳ)² )
 
 The analysis yielded **r = 0.899 (p = 0.0059)**, confirming that more token-intensive tasks require longer computation times.  
 
@@ -231,19 +229,13 @@ The analysis yielded **r = 0.899 (p = 0.0059)**, confirming that more token-inte
 ### Efficiency Metrics  
 
 **Formula 2. Token Efficiency Ratio**  
-\[
-\text{Token Efficiency Ratio} = \frac{\text{Mean Output Tokens}}{\text{Mean Input Tokens}}
-\]
+Token Efficiency Ratio = Mean Output Tokens / Mean Input Tokens
 
 **Formula 3. Time per Token**  
-\[
-\text{Time per Token (s)} = \frac{\text{Mean Execution Time}}{\text{Mean Total Tokens}}
-\]
+Time per Token (s) = Mean Execution Time / Mean Total Tokens
 
 **Formula 4. Output Productivity**  
-\[
-\text{Output Productivity (Tokens/s)} = \frac{\text{Mean Output Tokens}}{\text{Mean Execution Time}}
-\]
+Output Productivity (Tokens/s) = Mean Output Tokens / Mean Execution Time
 
 **Key Findings:**  
 - **Token Efficiency**: `synthesize_final_report_node` high (0.88), `generate_arxiv_query_node` low (0.09).  
@@ -255,19 +247,13 @@ The analysis yielded **r = 0.899 (p = 0.0059)**, confirming that more token-inte
 ### Stability Analysis  
 
 **Formula 5. Interquartile Range (IQR)**  
-\[
 IQR = Q3 - Q1
-\]
 
 **Formula 6. Coefficient of Variation (CV)**  
-\[
-CV = \frac{IQR}{Median}
-\]
+CV = IQR / Median
 
 **Formula 7. Stability Score**  
-\[
-\text{Stability Score} = \frac{1}{CV}
-\]
+Stability Score = 1 / CV
 
 **Key Findings:**  
 - **High Variability**: `execute_arxiv_search_and_create_persona_node (CV = 0.82)`, `collect_convergence_feedback_node (CV = 0.62)`.  
@@ -292,14 +278,10 @@ CV = \frac{IQR}{Median}
 ### Bottleneck Identification  
 
 **Formula 8. Time Share (%)**  
-\[
-\text{Time Share} = \frac{\text{Mean Time} \times n}{\sum (\text{Mean Time} \times n)} \times 100
-\]
+Time Share (%) = (Mean Time × n) / Σ(Mean Time × n) × 100
 
 **Formula 9. Token Share (%)**  
-\[
-\text{Token Share} = \frac{\text{Mean Total Tokens} \times n}{\sum (\text{Mean Total Tokens} \times n)} \times 100
-\]
+Token Share (%) = (Mean Total Tokens × n) / Σ(Mean Total Tokens × n) × 100
 
 **Key Findings:**  
 - `synthesize_final_report_node`: **34.6% tokens, 29.3% time**.  
@@ -324,19 +306,13 @@ CV = \frac{IQR}{Median}
 Composite scores were derived using z-score normalization.  
 
 **Formula 10. Z-score Normalization**  
-\[
-Z(x) = \frac{x - \mu}{\sigma}
-\]
+Z(x) = (x - μ) / σ
 
 **Formula 11. Complexity Score**  
-\[
-\text{Complexity Score} = Z(\text{mean\_total}) + Z(\text{token\_cv})
-\]
+Complexity Score = Z(mean_total) + Z(token_cv)
 
 **Formula 12. Efficiency Score**  
-\[
-\text{Efficiency Score} = -Z(\text{time\_per\_token})
-\]
+Efficiency Score = -Z(time_per_token)
 
 **Fig. 14.** Node Efficiency vs. Complexity Analysis  
 
