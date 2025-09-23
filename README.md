@@ -186,18 +186,18 @@ The system adapts to context and performance through conditional nodes:
 
 ---
 
-# 6. Results and Performance Analysis  
+# 6. Experimental Evaluation and Performance Analysis
 
-## 6.1. Experimental Evaluation and Performance Analysis  
-
-### 6.1.1. Experimental Design and Setup  
+## 6.1. Experimental Design and Setup  
 - **30 simulations** conducted using 10 high-potential technology convergence pairs.  
 - **3 meeting facilitation strategies** tested:  
   - **Consensus-Driven**: focuses on agreement.  
   - **Greedy-Exploitation**: prioritizes short-term high-impact actions.  
   - **Exploratory-Brainstorming**: fosters diverse ideas without immediate consensus.  
 
-### 6.1.2. Simulation Environment and Implementation  
+---
+
+## 6.2. Simulation Environment and Implementation  
 - **Model**: Qwen LLM (local HPC deployment).  
 - **Hardware**: 8-core Intel Xeon, 4× V100 GPUs, 128GB RAM, 2TB NVMe SSD.  
 - **Software**: Python 3.8, PyTorch 1.12, Sentence-Transformers 2.2.2, Neo4j 4.4.11.  
@@ -207,7 +207,9 @@ The system adapts to context and performance through conditional nodes:
   - 5 random seeds for robustness  
 - **Metrics tracked**: execution time per node, token usage, and variance (<3%).  
 
-### 6.1.3. Token Usage–Execution Time Correlation  
+---
+
+## 6.3. Token Usage–Execution Time Correlation  
 - **Pearson correlation**: **r = 0.899, p = 0.0059**.  
 - Strong positive correlation → higher token usage → longer execution time.  
 - **Bottlenecks**:  
@@ -215,7 +217,9 @@ The system adapts to context and performance through conditional nodes:
   - `execute_arxiv_search_and_create_persona_node`  
 - **Efficient outlier**: `generate_arxiv_query_node`.  
 
-### 6.1.4. Node-Level Performance Analysis  
+---
+
+## 6.4. Node-Level Performance Analysis  
 **Efficiency metrics:**  
 - **Token Efficiency** (output/input ratio): High = `synthesize_final_report_node (0.88)`; Low = `generate_arxiv_query_node (0.09)`.  
 - **Processing Efficiency** (time per token): Fastest = `generate_arxiv_query_node (1.85 ms/token)`; Slowest = `execute_arxiv_search_and_create_persona_node (12.36 ms/token)`.  
@@ -230,7 +234,9 @@ The system adapts to context and performance through conditional nodes:
 - Top 3 nodes consume **61.5% total execution time**.  
 - Optimizing top 3 nodes by 20% → **12.3% overall improvement**.
 
-### 6.1.5. Optimization Strategy and Recommendations  
+---
+
+## 6.5. Optimization Strategy and Recommendations  
 1. **Prioritize bottlenecks**  
    - Optimize `synthesize_final_report_node` (parallelization, incremental generation).  
    - Refactor `execute_arxiv_search_and_create_persona_node` (caching, async processing).  
