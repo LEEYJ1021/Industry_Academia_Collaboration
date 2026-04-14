@@ -1,0 +1,25 @@
+﻿obs_id,model,pair_id,strategy,run_idx,pair_domain,Condition,is_full_pipeline,CQS_collab_eq4,CQS_extended,CQS_conv_eq4,growth_potential,avg_expert_score,api_success,feasibility,novelty
+phi3__G06F16-H04W12__00,phi3,G06F16-H04W12,Consensus-Driven,0,Data/Comm-Centric,Full Pipeline,1,6.9434,7.3593,5.8334,9.1,22.35,1,8.72,10.0
+phi3__G06F16-H04W12__01,phi3,G06F16-H04W12,Exploratory-Brainstorming,1,Data/Comm-Centric,Full Pipeline,1,7.1464,7.432,8.235,9.1,17.9,1,8.233,10.0
+phi3__B60R21-B60R23__00,phi3,B60R21-B60R23,Consensus-Driven,0,Vehicle-Centric,Full Pipeline,1,7.076,7.4898,5.6708,9.0,22.35,1,8.651,10.0
+phi3__B60R21-B60R23__01,phi3,B60R21-B60R23,Exploratory-Brainstorming,1,Vehicle-Centric,Full Pipeline,1,7.0066,7.4274,5.5944,9.0,17.9,1,8.795,10.0
+phi3__G08G5-H04L20__00,phi3,G08G5-H04L20,Consensus-Driven,0,Cross-Industry,Full Pipeline,1,7.2602,7.6423,5.8356,8.8,22.35,1,8.709,10.0
+phi3__G08G5-H04L20__01,phi3,G08G5-H04L20,Exploratory-Brainstorming,1,Cross-Industry,Full Pipeline,1,7.11,7.4924,5.6706,8.8,17.9,1,8.563,10.0
+phi3__B60R23-G01S7__00,phi3,B60R23-G01S7,Consensus-Driven,0,V2X,Full Pipeline,1,7.4158,7.7344,5.81,8.9,22.35,1,8.545,10.0
+phi3__B60R23-G01S7__01,phi3,B60R23-G01S7,Exploratory-Brainstorming,1,V2X,Full Pipeline,1,7.36,7.7024,8.1498,8.9,17.9,1,8.598,10.0
+phi3__B61L25-G06Q50__00,phi3,B61L25-G06Q50,Consensus-Driven,0,Cross-Industry,Full Pipeline,1,6.9506,7.2864,5.5154,8.7,22.35,1,8.324,10.0
+phi3__B61L25-G06Q50__01,phi3,B61L25-G06Q50,Exploratory-Brainstorming,1,Cross-Industry,Full Pipeline,1,7.0594,7.4479,5.6566,8.7,17.9,1,8.613,10.0
+phi3__G07C5-H04M1__00,phi3,G07C5-H04M1,Consensus-Driven,0,Data/Comm-Centric,Full Pipeline,1,7.1288,7.5254,5.74,8.6,22.35,1,8.783,10.0
+phi3__G07C5-H04M1__01,phi3,G07C5-H04M1,Exploratory-Brainstorming,1,Data/Comm-Centric,Full Pipeline,1,7.1106,7.569,5.8076,8.6,17.9,1,8.952,10.0
+qwen__G06F16-H04W12__00,qwen,G06F16-H04W12,Consensus-Driven,0,Data/Comm-Centric,Full Pipeline,1,8.8572,9.0144,7.269,9.1,22.35,1,9.495,5.095
+qwen__G06F16-H04W12__01,qwen,G06F16-H04W12,Exploratory-Brainstorming,1,Data/Comm-Centric,Full Pipeline,1,8.981,8.9296,7.1646,9.1,17.9,1,8.76,4.533
+qwen__B60R21-B60R23__00,qwen,B60R21-B60R23,Consensus-Driven,0,Vehicle-Centric,Full Pipeline,1,8.7564,8.8205,7.2232,9.0,22.35,1,8.863,4.956
+qwen__B60R21-B60R23__01,qwen,B60R21-B60R23,Exploratory-Brainstorming,1,Vehicle-Centric,Full Pipeline,1,8.8614,8.8665,7.1996,9.0,17.9,1,8.749,4.877
+qwen__G08G5-H04L20__00,qwen,G08G5-H04L20,Consensus-Driven,0,Cross-Industry,Full Pipeline,1,8.9078,8.8152,5.8238,8.8,22.35,1,8.325,5.045
+qwen__G08G5-H04L20__01,qwen,G08G5-H04L20,Exploratory-Brainstorming,1,Cross-Industry,Full Pipeline,1,8.6902,8.6919,6.5306,8.8,17.9,1,8.576,5.323
+qwen__B60R23-G01S7__00,qwen,B60R23-G01S7,Consensus-Driven,0,V2X,Full Pipeline,1,9.0054,8.9039,7.194,8.9,22.35,1,8.352,5.349
+qwen__B60R23-G01S7__01,qwen,B60R23-G01S7,Exploratory-Brainstorming,1,V2X,Full Pipeline,1,8.8958,8.9293,5.6566,8.9,17.9,1,8.922,4.898
+qwen__B61L25-G06Q50__00,qwen,B61L25-G06Q50,Consensus-Driven,0,Cross-Industry,Full Pipeline,1,8.6308,8.7388,7.2752,8.7,22.35,1,8.982,4.846
+qwen__B61L25-G06Q50__01,qwen,B61L25-G06Q50,Exploratory-Brainstorming,1,Cross-Industry,Full Pipeline,1,7.1368,7.5253,7.1944,8.7,17.9,1,8.613,10.0
+qwen__G07C5-H04M1__00,qwen,G07C5-H04M1,Consensus-Driven,0,Data/Comm-Centric,Full Pipeline,1,7.1014,7.5264,7.2978,8.6,22.35,1,8.75,10.0
+qwen__G07C5-H04M1__01,qwen,G07C5-H04M1,Exploratory-Brainstorming,1,Data/Comm-Centric,Full Pipeline,1,8.9098,8.939,7.2892,8.6,17.9,1,8.917,4.288

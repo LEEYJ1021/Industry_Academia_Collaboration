@@ -1,0 +1,9 @@
+﻿Condition,N_ctrl,N_cond,M_ctrl,M_cond,Delta,CI_L_BCa,CI_U_BCa,Cohen_d,Glass_delta,CLES,p_raw,sig_raw,p_BH,sig_BH,p_Holm,sig_Holm,note,model
+No Persona Module,12,12,7.1307,6.9936,0.1371,-0.1755,0.2758,0.505,0.9226,0.875,0.2354,ns,0.3954,ns,0.7062,ns,"[STAT-1,2] BCa CI + BH + Holm",phi3
+No Patent Grounding,12,12,7.1307,7.0621,0.0685,-0.0234,0.176,0.5355,0.4612,0.5833,0.2048,ns,0.3954,ns,0.8192,ns,"[STAT-1,2] BCa CI + BH + Holm",phi3
+No Academic Integration,12,12,7.1307,7.3013,-0.1707,-0.638,0.1135,-0.3597,-1.1488,0.6528,0.3954,ns,0.3954,ns,0.3954,ns,"[STAT-1,2] BCa CI + BH + Holm",phi3
+No Forecasting/LSTM,12,12,7.1307,7.2443,-0.1137,-0.4932,0.0508,-0.3631,-0.7652,0.4583,0.3891,ns,0.3954,ns,0.7782,ns,"[STAT-1,2] BCa CI + BH + Holm",phi3
+No Persona Module,12,12,8.5612,8.0002,0.561,0.0149,0.84,1.1486,0.8219,0.8333,0.0162,*,0.0648,ns,0.0648,ns,"[STAT-1,2] BCa CI + BH + Holm",qwen
+No Patent Grounding,12,12,8.5612,8.3519,0.2093,-0.3432,0.4911,0.4281,0.3067,0.8333,0.3157,ns,0.420933,ns,0.6314,ns,"[STAT-1,2] BCa CI + BH + Holm",qwen
+No Academic Integration,12,12,8.5612,8.1919,0.3693,-0.1832,0.6511,0.7554,0.5411,0.8333,0.0899,ns,0.1798,ns,0.2697,ns,"[STAT-1,2] BCa CI + BH + Holm",qwen
+No Forecasting/LSTM,12,12,8.5612,8.3954,0.1658,-0.2986,0.5459,0.2966,0.2429,0.8194,0.477,ns,0.477,ns,0.477,ns,"[STAT-1,2] BCa CI + BH + Holm",qwen

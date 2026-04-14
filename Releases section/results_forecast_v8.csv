@@ -1,0 +1,13 @@
+﻿n,MAPE,SMAPE,MAE,RMSE,Theil_U,Dir_Acc_pct,PI_80_cov_pct,PI_80_lower,PI_80_upper,pair_id,domain,train_window,test_window,n_train,actual_test,lstm_fc,naive_fc,growth_rate_used,note
+2,29.94,35.63,9.0,9.8489,0.6198,100.0,100.0,-13.0,-5.0,G06F16-H04W12,Data/Comm-Centric,periods_0-2,periods_3-4,3,"[22, 35]","[17, 22]","[14, 14]",0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+1,22.86,25.81,8.0,8.0,0.6154,0.0,100.0,-8.0,-8.0,G06F16-H04W12,Data/Comm-Centric,periods_0-3,periods_4-4,4,[35],[27],[22],0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+2,27.78,32.73,11.0,12.083,0.6053,100.0,100.0,-16.0,-6.0,B60R21-B60R23,Vehicle-Centric,periods_0-2,periods_3-4,3,"[30, 45]","[24, 29]","[19, 19]",0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+1,17.78,19.51,8.0,8.0,0.5333,0.0,100.0,-8.0,-8.0,B60R21-B60R23,Vehicle-Centric,periods_0-3,periods_4-4,4,[45],[37],[30],0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+2,38.1,47.27,9.0,9.4868,0.6811,100.0,100.0,-12.0,-6.0,G08G5-H04L20,Cross-Industry,periods_0-2,periods_3-4,3,"[18, 28]","[12, 16]","[10, 10]",0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+1,21.43,24.0,6.0,6.0,0.6,0.0,100.0,-6.0,-6.0,G08G5-H04L20,Cross-Industry,periods_0-3,periods_4-4,4,[28],[22],[18],0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+2,27.11,31.75,9.0,9.8489,0.586,100.0,100.0,-13.0,-5.0,B60R23-G01S7,V2X,periods_0-2,periods_3-4,3,"[25, 38]","[20, 25]","[16, 16]",0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+1,18.42,20.29,7.0,7.0,0.5385,0.0,100.0,-7.0,-7.0,B60R23-G01S7,V2X,periods_0-3,periods_4-4,4,[38],[31],[25],0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+2,39.19,49.43,7.0,7.6158,0.7071,100.0,100.0,-10.0,-4.0,B61L25-G06Q50,Cross-Industry,periods_0-2,periods_3-4,3,"[13, 21]","[9, 11]","[7, 7]",0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+1,23.81,27.03,5.0,5.0,0.625,0.0,100.0,-5.0,-5.0,B61L25-G06Q50,Cross-Industry,periods_0-3,periods_4-4,4,[21],[16],[13],0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+2,32.81,39.78,9.0,9.8489,0.6466,100.0,100.0,-13.0,-5.0,G07C5-H04M1,Data/Comm-Centric,periods_0-2,periods_3-4,3,"[20, 32]","[15, 19]","[12, 12]",0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output
+1,21.88,24.56,7.0,7.0,0.5833,0.0,100.0,-7.0,-7.0,G07C5-H04M1,Data/Comm-Centric,periods_0-3,periods_4-4,4,[32],[25],[20],0.2197,LSTM-proxy (log-growth); replace with actual Bayesian LSTM output

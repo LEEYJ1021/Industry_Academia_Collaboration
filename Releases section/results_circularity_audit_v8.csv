@@ -1,0 +1,7 @@
+﻿CQS_Component,Scorer,Scorer_Type,Is_LLM_Based,Circularity_Level,Model_ID,Note
+Clarity,NLI (DeBERTa-base),cross-encoder,False,None,cross-encoder/nli-deberta-base,NLI entailment; discriminative not generative
+Actionability,CE (MiniLM),cross-encoder,False,None,cross-encoder/ms-marco-MiniLM-L-6-v2,Relevance scoring; completely separate from generator
+Alignment,ST (MiniLM-L6),bi-encoder,False,None,sentence-transformers/all-MiniLM-L6-v2,Embedding cosine; no generation involved
+Feasibility,CE+QNLI,cross-encoder,False,None,CE+cross-encoder/qnli-distilroberta-base,Deployment feasibility via NLI; non-generative
+Novelty,Jaccard rule,rule-based,False,None,set-overlap formula,Pure set arithmetic; zero LLM involvement
+Factual Grounding,KW density + QNLI,rule+cross-encoder,False,None,keyword-density + qnli-distilroberta,Domain keyword presence; deterministic

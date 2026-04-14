@@ -1,0 +1,61 @@
+﻿Condition,pair_id,strategy,CQS,CQS_extended,Delta_vs_full,api_success,model,phase_note
+Full Pipeline (Control),G06F16-H04W12,Consensus-Driven,6.9434,7.3593,0.0,True,phi3,collab+conv
+Full Pipeline (Control),G06F16-H04W12,Exploratory-Brainstorming,7.1464,7.432,0.0,True,phi3,collab+conv
+Full Pipeline (Control),B60R21-B60R23,Consensus-Driven,7.076,7.4898,0.0,True,phi3,collab+conv
+Full Pipeline (Control),B60R21-B60R23,Exploratory-Brainstorming,7.0066,7.4274,0.0,True,phi3,collab+conv
+Full Pipeline (Control),G08G5-H04L20,Consensus-Driven,7.2602,7.6423,0.0,True,phi3,collab+conv
+Full Pipeline (Control),G08G5-H04L20,Exploratory-Brainstorming,7.11,7.4924,0.0,True,phi3,collab+conv
+Full Pipeline (Control),B60R23-G01S7,Consensus-Driven,7.4158,7.7344,0.0,True,phi3,collab+conv
+Full Pipeline (Control),B60R23-G01S7,Exploratory-Brainstorming,7.36,7.7024,0.0,True,phi3,collab+conv
+Full Pipeline (Control),B61L25-G06Q50,Consensus-Driven,6.9506,7.2864,0.0,True,phi3,collab+conv
+Full Pipeline (Control),B61L25-G06Q50,Exploratory-Brainstorming,7.0594,7.4479,0.0,True,phi3,collab+conv
+Full Pipeline (Control),G07C5-H04M1,Consensus-Driven,7.1288,7.5254,0.0,True,phi3,collab+conv
+Full Pipeline (Control),G07C5-H04M1,Exploratory-Brainstorming,7.1106,7.569,0.0,True,phi3,collab+conv
+No Persona Module,G06F16-H04W12,Consensus-Driven,6.8982,7.2822,-0.2325,True,phi3,collab+conv
+No Persona Module,G06F16-H04W12,Exploratory-Brainstorming,6.8484,7.134,-0.2823,True,phi3,collab+conv
+No Persona Module,B60R21-B60R23,Consensus-Driven,8.1014,8.1583,0.9707,True,phi3,collab+conv
+No Persona Module,B60R21-B60R23,Exploratory-Brainstorming,6.8166,7.1271,-0.314,True,phi3,collab+conv
+No Persona Module,G08G5-H04L20,Consensus-Driven,6.9616,7.3456,-0.1691,True,phi3,collab+conv
+No Persona Module,G08G5-H04L20,Exploratory-Brainstorming,6.8946,7.1802,-0.2361,True,phi3,collab+conv
+No Persona Module,B60R23-G01S7,Consensus-Driven,6.945,7.2481,-0.1856,True,phi3,collab+conv
+No Persona Module,B60R23-G01S7,Exploratory-Brainstorming,6.8286,7.1391,-0.3021,True,phi3,collab+conv
+No Persona Module,B61L25-G06Q50,Consensus-Driven,6.8952,7.1983,-0.2355,True,phi3,collab+conv
+No Persona Module,B61L25-G06Q50,Exploratory-Brainstorming,7.0162,7.3716,-0.1144,True,phi3,collab+conv
+No Persona Module,G07C5-H04M1,Consensus-Driven,6.8894,7.1925,-0.2412,True,phi3,collab+conv
+No Persona Module,G07C5-H04M1,Exploratory-Brainstorming,6.828,7.1136,-0.3026,True,phi3,collab+conv
+No Patent Grounding,G06F16-H04W12,Consensus-Driven,7.106,7.3805,-0.0247,True,phi3,collab+conv
+No Patent Grounding,G06F16-H04W12,Exploratory-Brainstorming,7.0598,7.2727,-0.0709,True,phi3,collab+conv
+No Patent Grounding,B60R21-B60R23,Consensus-Driven,7.1606,7.4805,0.0299,True,phi3,collab+conv
+No Patent Grounding,B60R21-B60R23,Exploratory-Brainstorming,6.8724,7.2532,-0.2583,True,phi3,collab+conv
+No Patent Grounding,G08G5-H04L20,Consensus-Driven,7.161,7.5031,0.0303,True,phi3,collab+conv
+No Patent Grounding,G08G5-H04L20,Exploratory-Brainstorming,6.978,7.3204,-0.1527,True,phi3,collab+conv
+No Patent Grounding,B60R23-G01S7,Consensus-Driven,7.1442,7.5365,0.0135,True,phi3,collab+conv
+No Patent Grounding,B60R23-G01S7,Exploratory-Brainstorming,7.1522,7.4107,0.0215,True,phi3,collab+conv
+No Patent Grounding,B61L25-G06Q50,Consensus-Driven,6.949,7.2448,-0.1817,True,phi3,collab+conv
+No Patent Grounding,B61L25-G06Q50,Exploratory-Brainstorming,7.063,7.4115,-0.0677,True,phi3,collab+conv
+No Patent Grounding,G07C5-H04M1,Consensus-Driven,7.1614,7.518,0.0308,True,phi3,collab+conv
+No Patent Grounding,G07C5-H04M1,Exploratory-Brainstorming,6.9382,7.3566,-0.1925,True,phi3,collab+conv
+No Academic Integration,G06F16-H04W12,Consensus-Driven,8.5626,8.526,1.4319,True,phi3,collab+conv
+No Academic Integration,G06F16-H04W12,Exploratory-Brainstorming,8.327,8.2976,1.1963,True,phi3,collab+conv
+No Academic Integration,B60R21-B60R23,Consensus-Driven,6.9816,7.2965,-0.149,True,phi3,collab+conv
+No Academic Integration,B60R21-B60R23,Exploratory-Brainstorming,8.2074,8.2345,1.0767,True,phi3,collab+conv
+No Academic Integration,G08G5-H04L20,Consensus-Driven,7.0748,7.4119,-0.0559,True,phi3,collab+conv
+No Academic Integration,G08G5-H04L20,Exploratory-Brainstorming,6.9298,7.2672,-0.2008,True,phi3,collab+conv
+No Academic Integration,B60R23-G01S7,Consensus-Driven,7.034,7.3076,-0.0967,True,phi3,collab+conv
+No Academic Integration,B60R23-G01S7,Exploratory-Brainstorming,7.1018,7.3553,-0.0289,True,phi3,collab+conv
+No Academic Integration,B61L25-G06Q50,Consensus-Driven,6.7344,7.0252,-0.3963,True,phi3,collab+conv
+No Academic Integration,B61L25-G06Q50,Exploratory-Brainstorming,6.8974,7.2409,-0.2332,True,phi3,collab+conv
+No Academic Integration,G07C5-H04M1,Consensus-Driven,6.8228,7.2028,-0.3079,True,phi3,collab+conv
+No Academic Integration,G07C5-H04M1,Exploratory-Brainstorming,6.942,7.3554,-0.1886,True,phi3,collab+conv
+No Forecasting/LSTM,G06F16-H04W12,Consensus-Driven,7.31,7.6145,0.1793,True,phi3,collab+conv
+No Forecasting/LSTM,G06F16-H04W12,Exploratory-Brainstorming,7.33,7.6841,0.1993,True,phi3,collab+conv
+No Forecasting/LSTM,B60R21-B60R23,Consensus-Driven,7.1962,7.5361,0.0655,True,phi3,collab+conv
+No Forecasting/LSTM,B60R21-B60R23,Exploratory-Brainstorming,7.0454,7.4462,-0.0853,True,phi3,collab+conv
+No Forecasting/LSTM,G08G5-H04L20,Consensus-Driven,7.0646,7.4267,-0.066,True,phi3,collab+conv
+No Forecasting/LSTM,G08G5-H04L20,Exploratory-Brainstorming,7.2358,7.5647,0.1052,True,phi3,collab+conv
+No Forecasting/LSTM,B60R23-G01S7,Consensus-Driven,7.0682,7.4805,-0.0625,True,phi3,collab+conv
+No Forecasting/LSTM,B60R23-G01S7,Exploratory-Brainstorming,8.5,8.5107,1.3693,True,phi3,collab+conv
+No Forecasting/LSTM,B61L25-G06Q50,Consensus-Driven,6.8694,7.1852,-0.2613,True,phi3,collab+conv
+No Forecasting/LSTM,B61L25-G06Q50,Exploratory-Brainstorming,7.2156,7.6465,0.085,True,phi3,collab+conv
+No Forecasting/LSTM,G07C5-H04M1,Consensus-Driven,7.0778,7.4828,-0.0529,True,phi3,collab+conv
+No Forecasting/LSTM,G07C5-H04M1,Exploratory-Brainstorming,7.0188,7.4572,-0.1119,True,phi3,collab+conv
