@@ -4,7 +4,6 @@
 
 This repository presents a **LangGraph-based multi-agent framework** engineered for **dynamic and adaptive decision-making** in **industry–academia R&D collaboration**. By integrating **Large Language Models (LLMs)** with **structured, data-driven, agentic processes**, this framework simulates and optimizes real-world R&D planning through a Two-Track experimental architecture.
 
-> **Journal:** *Information Systems Frontiers* (ISF) — Major Revision  
 > **Contribution:** A step toward treating early-stage R&D innovation as a simulatable, data-grounded process — advancing, rather than definitively resolving, systematic R&D foresight.
 
 The workflow features **expert-driven approvals**, **iterative feedback loops**, **conditional routing**, and a **non-LLM evaluation architecture** that eliminates evaluative circularity — addressing a critical gap in prior LLM-based innovation studies.
@@ -548,6 +547,3 @@ The R script produces Tables A1–M1 and Figures B1–J1 as described in the pap
 | EVALUATE_MEETING_OUTCOME | 3.55 | 1042.38 | 3.41 | 293.63 |
 | GENERATE_ARXIV_QUERY | 1.17 | 632.97 | 1.85 | 541.00 |
 
----
-
-*ISF Major Revision | April 2026 | Two-Track validation architecture with non-LLM evaluation*
