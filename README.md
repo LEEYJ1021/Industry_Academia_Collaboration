@@ -55,11 +55,7 @@ Empirical contributions are organized as a complementary Two-Track design, where
 ---
 
 ## 4. Contribution Highlights
-
-**Workflow Design and Implementation** — Yong-Jae Lee  
-**Visualization Development** — Yong-Jae Lee  
-**Analysis Process Coordination** — Yong-Jae Lee  
-**Results Documentation and Release Planning** — Yong-Jae Lee
+Workflow design, visualization development, analysis coordination, and results documentation were all conducted by **Yong-Jae Lee**.
 
 ---
 
