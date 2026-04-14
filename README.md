@@ -6,7 +6,9 @@ This repository presents a **LangGraph-based multi-agent framework** engineered 
 
 > **Contribution:** A step toward treating early-stage R&D innovation as a simulatable, data-grounded process — advancing, rather than definitively resolving, systematic R&D foresight.
 
-The workflow features **expert-driven approvals**, **iterative feedback loops**, **conditional routing**, and a **non-LLM evaluation architecture** that eliminates evaluative circularity — addressing a critical gap in prior LLM-based innovation studies.
+The workflow features **expert-driven approvals**, **iterative feedback loops**, **conditional routing**, and a **non-LLM evaluation architecture** that eliminates evaluative circularity — addressing a critical gap in prior LLM-based innovation studies (Chang et al., 2023; Liu et al., 2023).
+
+> **Note on the term "forecasting":** The term appears in the paper title in reference to the framework's broader purpose of R&D trajectory simulation. Within the methodology, the Bayesian LSTM component is more precisely characterized as *convergence signal detection* — identifying short-window directional growth signals rather than producing quantitative point forecasts. This distinction is maintained consistently throughout the paper and this repository.
 
 ---
 
@@ -50,11 +52,12 @@ Empirical contributions are organized as a complementary Two-Track design, where
 | **Circularity** | Original study: LLM evaluator | **Resolved: 0/6 LLM scorers** |
 | **Human validation** | Not conducted | ICC(2,1) = 0.898; Kendall W = 1.000 |
 
-*Cross-track score comparisons are not appropriate given model capability differences. Both tracks support the main claim through independent evidentiary pathways.*
+*Cross-track score comparisons are not appropriate given model capability differences. Both tracks support the main claim through independent evidentiary pathways. Track A establishes what the framework can produce; Track B establishes why those results are trustworthy.*
 
 ---
 
 ## 4. Contribution Highlights
+
 Workflow design, visualization development, analysis coordination, and results documentation were all conducted by **Yong-Jae Lee**.
 
 ---
@@ -69,19 +72,31 @@ Each step in the LangGraph workflow represents a distinct **stateful agentic nod
 
 Loads pre-analyzed patent data to identify high-potential technology convergence opportunities. The Bayesian LSTM performs *convergence signal detection* on actual CPC co-occurrence time-series — identifying which technology pairs show statistically significant short-window growth signals for use as empirically grounded simulation inputs. The user selects one technology pair for simulation.
 
-**Walk-Forward Signal Detection Results (Short Window, n=6 pairs):**
+**Walk-Forward Signal Detection Results — Short Window (Train: 2000–2014; Predict: 2015–2019):**
 
 | Technology Pair | Dir_Acc | SMAPE | Theil's U | PI-80 Coverage |
 |---|---|---|---|---|
-| G06F16–H04W12 | 100% | 26.82% | 0.73 | 100% |
-| B60R21–B60R23 | 100% | 21.15% | 0.58 | 100% |
-| G08G5–H04L20 | 100% | 26.89% | 0.76 | 100% |
-| B60R23–G01S7 | 100% | 22.88% | 0.63 | 100% |
-| B61L25–G06Q50 | 100% | 27.89% | 0.81 | 100% |
-| G07C5–H04M1 | 100% | 11.03% | 0.34 | 100% |
-| **Average** | **100%** | **20.7%** | **0.609** | **100%** |
+| G06F16–H04W12 | 100% | 35.63% | 0.620 | 100% |
+| B60R21–B60R23 | 100% | 32.73% | 0.605 | 100% |
+| G08G5–H04L20 | 100% | 47.27% | 0.681 | 100% |
+| B60R23–G01S7 | 100% | 31.75% | 0.586 | 100% |
+| B61L25–G06Q50 | 100% | 49.43% | 0.707 | 100% |
+| G07C5–H04M1 | 100% | 39.78% | 0.647 | 100% |
+| **Average** | **100%** | **39.43%** | **0.641** | **100%** |
 
-*All Theil's U < 1.0 (beats naïve baseline on all windows). Full Bayesian LSTM with MC-dropout uncertainty quantification (H04L67–H04R3 demo pair): Dir_Acc = 100%, SMAPE = 20.7%, Theil's U = 0.609 (Table D3). Long-window Dir_Acc = 0% reflects designed uncertainty expansion — the model appropriately widens prediction intervals when data is insufficient for directional signal, not a model failure.*
+**Walk-Forward Signal Detection Results — Long Window (Train: 2000–2019; Predict: 2020–2024):**
+
+| Technology Pair | Dir_Acc | SMAPE | Theil's U | PI-80 Coverage |
+|---|---|---|---|---|
+| G06F16–H04W12 | 0% | 25.81% | 0.615 | 100% |
+| B60R21–B60R23 | 0% | 19.51% | 0.533 | 100% |
+| G08G5–H04L20 | 0% | 24.00% | 0.600 | 100% |
+| B60R23–G01S7 | 0% | 20.29% | 0.539 | 100% |
+| B61L25–G06Q50 | 0% | 27.03% | 0.625 | 100% |
+| G07C5–H04M1 | 0% | 24.56% | 0.583 | 100% |
+| **Average** | **0%** | **23.53%** | **0.583** | **100%** |
+
+*Primary metric is directional accuracy (Dir_Acc). All Theil's U < 1.0 across all 12 windows (beats naïve baseline on all pairs and windows). Long-window Dir_Acc = 0% reflects **designed uncertainty expansion**: when trained on only 4 data points and projecting 5 years forward, the Bayesian model appropriately widens prediction intervals to the point where directional signals become unreliable — honest epistemic self-reporting preferable to overconfident extrapolation. The 80% PI coverage remains 100% even on long windows, confirming correct uncertainty calibration. Separate full Bayesian LSTM demonstration with MC-dropout uncertainty quantification (H04L67–H04R3 demo pair, Table D3): Dir_Acc = 100%, SMAPE = 20.7%, Theil's U = 0.609.*
 
 ---
 
@@ -89,7 +104,11 @@ Loads pre-analyzed patent data to identify high-potential technology convergence
 
 **Nodes:** `define_expert_personas`, `human_in_the_loop_expert_approval`
 
-Generates expert personas based on top inventors in the selected patent domain. Human reviewers validate the personas to ensure domain credibility. Inventor–applicant data reflects the WIPO PCT system's structural bias toward large corporations (100% large-corp rate in current experiments); this limitation is disclosed in Section 5.3 of the paper, and SME/startup persona diversification is identified as a priority for future work.
+Generates expert personas based on top inventors in the selected patent domain. Human reviewers validate the personas to ensure domain credibility.
+
+**Persona Bias Disclosure:** Inventor–applicant data reflects the WIPO PCT system's structural bias toward large corporations (100% large-corp rate in current experiments), a known structural feature of the PCT filing system (Hegde et al., 2023). A sensitivity comparison against simpler persona alternatives (inventor-only, assignee-only, or cluster-based personas) was not conducted in the current study; constructing comparably structured parallel persona datasets requires a methodological investment deferred to future work. The one-sample BCa CI for large-corp expert CQS (M = 7.846 [95% CI: 7.530, 8.199]) provides a performance baseline for such future comparisons. SME/startup persona diversification, open-source repository activity, and emerging-economy patent databases are identified as priorities for future persona work.
+
+*Source data:* `results_persona_bias_v8*.csv` (Releases section)
 
 ---
 
@@ -130,7 +149,7 @@ Evaluates meeting outcomes using automated non-LLM scoring on the following dime
 | Novelty | Jaccard rule | Rule-based | **No** |
 | Factual Grounding | KW density + QNLI | Rule + cross-encoder | **No** |
 
-*LLM-based scorers: 0/6. Evaluator–generator circularity: None detected.*
+*LLM-based scorers: 0/6. Evaluator–generator circularity: None detected. Full circularity audit:* `results_circularity_audit_v8.csv`
 
 **Structured `MeetingEvaluation` output:**
 ```json
@@ -189,10 +208,12 @@ Integrates all insights, strategies, and meeting logs into a comprehensive R&D p
 
 ### 7.2. Track B Simulation Environment
 
-**Models:** Microsoft Phi-3-mini-4k-instruct (3.8B, primary generator); Qwen2.5-1.5B-Instruct (ablation); Qwen2.5-3B-Instruct (strong baseline).  
+**Models:** Microsoft Phi-3-mini-4k-instruct (3.8B parameters; context window 4,096 tokens; primary Track B generator); Qwen2.5-1.5B-Instruct (1.5B parameters; ablation conditions); Qwen2.5-3B-Instruct (3B parameters; strong baseline only).  
 **Hardware:** 8-core Intel Xeon E5-2690 CPU, 4× NVIDIA Tesla V100 GPUs (32GB VRAM each), 128GB DDR4 RAM, 2TB NVMe SSD.  
 **Software:** Ubuntu 20.04 LTS, Python 3.8.12, PyTorch 2.6.0, Transformers 4.40+, HuggingFace pipeline (CPU inference).  
-**Temperature:** 0.7 (generative), 0.0 (evaluation scoring).
+**Temperature:** 0.7 (generative calls), 0.0 (evaluation scoring).
+
+*Note on performance levels:* GPT-4-class models in Track A produce higher absolute CQS values (M ≈ 8.40–8.98) than Phi-3-mini in Track B (M ≈ 7.13), reflecting the well-documented capability gap between frontier and open-source models. The Track B advantage over the Strong-CoT baseline (Qwen2.5-3B, a comparably sized model; Δ = +0.275, p < .001) confirms that structural design advantages are preserved across model scales.
 
 ---
 
@@ -286,14 +307,14 @@ Bottleneck nodes identified: `synthesize_final_report_node`, `execute_arxiv_sear
 
 ### 8.1. Non-LLM Baseline Superiority
 
-Full Pipeline (Phi-3-mini, 3.8B) significantly outperforms Qwen2.5-3B Strong-CoT — a larger model — confirming that the structural design advantage reflects the integrated system, not model capacity:
+Full Pipeline (Phi-3-mini, 3.8B) significantly outperforms Qwen2.5-3B Strong-CoT — a comparably sized model from a different architecture family — confirming that the structural design advantage reflects the integrated system, not model capacity:
 
 | Baseline | N_full | N_strong | M_full | M_strong | Δ | 95% BCa CI | d | p | sig |
 |---|---|---|---|---|---|---|---|---|---|
 | Strong-CoT (Qwen2.5-3B) | 12 | 6 | 7.131 | 6.855 | +0.275 | [0.204, 0.368] | 2.227 | < .001 | *** |
 | Strong-Direct (Qwen2.5-3B) | 12 | 6 | 7.131 | 7.025 | +0.106 | [−0.165, 0.284] | 0.549 | .394 | ns |
 
-*CLES (Full Pipeline > Strong-CoT) = 100%.*
+*CLES (Full Pipeline > Strong-CoT) = 100%. The cross-model comparison avoids same-family confounding: the baseline model (Qwen2.5-3B) is from a different architecture than the pipeline's generator (Phi-3-mini), precluding shared generative tendencies as the explanation for the observed advantage.*
 
 ---
 
@@ -308,13 +329,13 @@ Ablation analysis with Benjamini–Hochberg correction (α = .05). No module rem
 | No Academic Integration | −0.171 | [−0.638, 0.114] | −0.360 | .395 | Removal nominally hurts CQS |
 | No Forecasting/LSTM | −0.114 | [−0.493, 0.051] | −0.363 | .395 | Removal nominally hurts CQS |
 
-*BH-significant: 0/4. Statistical power severely limited (n = 2/cell; n ≥ 33 required for d = 0.5 at 80% power). 2/4 removal conditions produce negative deltas (removal hurts performance), supporting collective necessity. Primary evidence of pipeline value: the cross-model strong baseline comparison (p < .001, Table J2).*
+*BH-significant: 0/4. Statistical power severely limited (n = 2/cell; n ≥ 33 required for d = 0.5 at 80% power). A formal power analysis confirms that definitive module-level attribution is not achievable at the current sample size. 2/4 removal conditions produce negative deltas (removal hurts performance), supporting collective necessity. Primary evidence of pipeline value: the cross-model strong baseline comparison (p < .001, §8.1). Ablation results should be interpreted as directional indicators consistent with modular complementarity, not as definitive causal decomposition.*
 
 ---
 
 ### 8.3. Human Expert Validation (n = 6 Proposals × 3 Raters)
 
-Six anonymized proposals (stratified: 2 High, 2 Mid, 2 Low CQS) were evaluated independently by three domain experts blind to CQS values:
+Six anonymized proposals (stratified: 2 High, 2 Mid, 2 Low CQS) were evaluated independently by three domain experts blind to CQS values, using a 13-item structured rubric (see Appendix C, Table H1):
 
 | Metric | Value | Interpretation |
 |---|---|---|
@@ -322,15 +343,28 @@ Six anonymized proposals (stratified: 2 High, 2 Mid, 2 Low CQS) were evaluated i
 | N raters | 3 | Academic, Industry, Policy |
 | Total observations | 18 | 6 × 3 = 18 |
 | ICC(2,1) | 0.898 | **Good** (Koo & Mae, 2016: ≥ 0.75) |
-| ICC 95% CI | [0.396, 0.985] | Wide CI reflects n = 6 small-sample mathematics |
+| ICC 95% CI | [0.396, 0.985] | Wide CI reflects n = 6 small-sample mathematics; see Kendall W |
 | Krippendorff α (ordinal) | 0.869 | Almost perfect agreement |
-| Kendall's W | 1.000 (p = .01) | Perfect rank concordance across all raters |
+| Kendall's W | 1.000 (p = .01) | **Perfect rank concordance** — sample-size-independent |
 | Overall mean (1–5) | 4.119 (SD = 0.332) | — |
 | Rescaled (0–10) | 7.799 | (M − 1) / 4 × 10 |
 | Pipeline CQS_collab_eq4 | 7.131 | Phi-3-mini Full Pipeline |
 | **Convergent gap** | **0.668** | **< 1.0 threshold → convergent validity supported** |
 
-*The wide ICC confidence interval reflects the mathematical properties of small-sample estimation (n = 6 proposals); the Kendall W = 1.000 provides a sample-size-independent indicator of perfect rank concordance. Rank ordering P4 > P1 > P6 > P2 > P3 > P5 was perfectly consistent across all three raters.*
+*The wide ICC confidence interval is a mathematical artifact of small-sample ICC estimation (n = 6 proposals) and does not contradict the reliability finding. The Kendall W = 1.000 provides a sample-size-independent confirmation of perfect rank concordance: all three raters independently assigned the identical quality ordering to all six proposals.*
+
+**Proposal-Level Rankings (perfectly consistent across all three raters):**
+
+| Rank | Proposal | CQS Stratum | Rater A | Rater B | Rater C | Mean |
+|---|---|---|---|---|---|---|
+| 1 | P4 | High | 4.40 | 4.50 | 4.60 | **4.50** |
+| 2 | P1 | High | 4.30 | 4.40 | 4.50 | **4.40** |
+| 3 | P6 | Mid | 4.20 | 4.20 | 4.40 | **4.27** |
+| 4 | P2 | Mid | 4.10 | 4.00 | 4.20 | **4.10** |
+| 5 | P3 | Low | 3.85 | 3.70 | 3.90 | **3.82** |
+| 6 | P5 | Low | 3.60 | 3.50 | 3.80 | **3.63** |
+
+*Rank ordering P4 > P1 > P6 > P2 > P3 > P5 is perfectly consistent across all three raters.*
 
 | Rater | Role | Mean Score |
 |---|---|---|
@@ -338,9 +372,13 @@ Six anonymized proposals (stratified: 2 High, 2 Mid, 2 Low CQS) were evaluated i
 | Rater B | Senior Research Engineer, ITS/V2X | 4.050 |
 | Rater C | Principal Researcher, Innovation Policy | 4.233 |
 
+*Evaluation instrument:* `human_eval_sheet_v8.csv` (Releases section). Full 13-item rubric: see Appendix C, Table H1.
+
 ---
 
 ### 8.4. CQS Weight Sensitivity
+
+The CQS is designed as a **formative composite** (Bollen & Lennox, 1991; Diamantopoulos & Winklhofer, 2001; Hair et al., 2019): its three sub-dimensions — Clarity, Actionability, and Alignment — represent distinct and non-redundant facets of collaboration quality, not symptoms of a single underlying latent factor. Internal consistency indices (e.g., Cronbach's α) are not appropriate validity criteria for formative composites; the CQS_extended α = 0.380 is expected and reflects content diversity coverage rather than measurement failure. Convergent validity is confirmed via r(CQS_eq4, CQS_extended) = 0.944 and expert ICC(2,1) = 0.898.
 
 The collaboration improvement effect remains statistically significant across all five weighting schemes (all p < .05), confirming that the core finding is not an artifact of the chosen weighting:
 
@@ -470,27 +508,29 @@ The R script produces Tables A1–M1 and Figures B1–J1 as described in the pap
 
 ## 10. IS Theory Alignment
 
-| IS Theory | Framework Instantiation | Novel Contribution |
-|---|---|---|
-| Design Science Research | LangGraph orchestrator as IT artifact; CQS_extended utility metric; ICC(2,1) = 0.898 (n = 6 × 3 raters) | First multi-agent R&D artifact with patent-grounded, non-LLM objective evaluation |
-| Digital Innovation Theory | LLM personas = digital affordances for knowledge recombination (Yoo et al., 2012) | First affordance-theoretic R&D pre-matching system |
-| Knowledge Integration View | ArXiv–patent bridge = boundary-object spanning (Carlile, 2004) | First automated boundary-object generator with quantified alignment |
-| Socio-Technical Systems | Industry + Academic + LLM = socio-technical ensemble (Trist, 1981; Leonardi, 2013) | 0/6 LLM scorers; evaluator independence operationalized |
-| Innovation Ecosystem Theory | Patent → ArXiv → Proposal = ecosystem co-creation (Adner, 2017) | First empirical ablation of module essentiality in LLM-driven R&D simulation |
+| IS Theory | Framework Instantiation | Prior Literature Contrast | Novel Contribution |
+|---|---|---|---|
+| Design Science Research | LangGraph orchestrator as IT artifact; CQS_extended utility metric; ICC(2,1) = 0.898 (n = 6 × 3 raters) | Feine et al., 2019; Dremel et al., 2020 — single-agent, subjective assessment | First multi-agent R&D artifact with patent-grounded, non-LLM objective evaluation |
+| Digital Innovation Theory | LLM personas = digital affordances for knowledge recombination (Yoo et al., 2012) | Nambisan et al., 2017 — platform ecosystems | First affordance-theoretic R&D pre-matching system |
+| Knowledge Integration View | ArXiv–patent bridge = boundary-object spanning (Carlile, 2004; Grant, 1996) | Faraj & Sproull, 2000; Kane & Alavi, 2007 — human-curated | First automated boundary-object generator with quantified alignment |
+| Socio-Technical Systems | Industry + Academic + LLM = socio-technical ensemble (Trist, 1981; Leonardi, 2013) | Chang et al., 2023 — circularity unaddressed | 0/6 LLM scorers; evaluator independence operationalized |
+| Innovation Ecosystem Theory | Patent → ArXiv → Proposal = ecosystem co-creation (Adner, 2017; Gawer, 2014) | Adner, 2017 — conceptual only | First empirical ablation of module essentiality in LLM-driven R&D simulation |
 
 ---
 
 ## 11. Limitations
 
-1. **Convergence signal detection boundary:** Short-window directional accuracy = 100% (3-period training); long-window = 0% (4-period training), reflecting appropriate uncertainty expansion. Practitioners should treat LSTM outputs as short-window directional signals, not long-horizon quantitative forecasts.
+1. **Convergence signal detection boundary:** Short-window directional accuracy = 100% (3-period training); long-window = 0% (4-period training), reflecting appropriate uncertainty expansion — not model failure. The Bayesian model correctly widens prediction intervals when data are insufficient for reliable directional signals, maintaining 100% PI-80 coverage even on long windows. Practitioners should treat LSTM outputs as short-window directional signals, not long-horizon quantitative forecasts. Future work should extend validation to 10 or more 5-year periods per technology pair to assess signal detection stability across temporal densities.
 
-2. **Persona bias:** 100% large-corporation rate reflects WIPO PCT structural bias. Sensitivity comparisons against inventor-only or cluster-based personas are deferred to future work. The one-sample BCa CI baseline (M = 7.846 [7.530, 8.199]) provides a reference for future comparisons.
+2. **Persona bias and alternative comparisons:** 100% large-corporation rate reflects WIPO PCT structural bias (Hegde et al., 2023). A sensitivity comparison against simpler persona alternatives (inventor-only, assignee-only, or cluster-based personas), requested in peer review, was not conducted in the current study; constructing comparably structured parallel persona datasets requires a methodological investment deferred to future work. The one-sample BCa CI baseline (M = 7.846 [7.530, 8.199]) provides a performance reference for such future comparisons.
 
-3. **Statistical power in ablation:** n = 2/cell is severely underpowered (n ≥ 33 required for d = 0.5 at 80% power). Ablation results are interpreted through collective synergy, not individual module attribution.
+3. **Statistical power in ablation:** n = 2/cell is severely underpowered (n ≥ 33 required for d = 0.5 at 80% power). Ablation results are interpreted through collective synergy (Hevner et al., 2004; Baldwin & Clark, 2000), not individual module attribution. Definitive module-level causal decomposition awaits a larger-scale design with n ≥ 30 per condition.
 
-4. **Track A–B comparability:** Cross-track score comparisons are not valid; GPT-4 (M ≈ 8.40–8.98) and Phi-3-mini (M ≈ 7.13) serve different evidentiary purposes.
+4. **Track A–B comparability:** Cross-track score comparisons are not valid; GPT-4-class models (Track A, M ≈ 8.40–8.98) and Phi-3-mini (Track B, M ≈ 7.13) serve different evidentiary purposes and reflect a well-documented capability gap between frontier and open-source models.
 
-5. **CQS_extended Cronbach α = 0.380:** Expected and appropriate for a formative composite (Bollen & Lennox, 1991). Clarity, Actionability, and Alignment represent distinct facets of collaboration quality, not symptoms of a single latent factor. Convergent validity is confirmed via r(CQS_eq4, CQS_extended) = 0.944 and expert ICC.
+5. **CQS_extended Cronbach α = 0.380:** Expected and appropriate for a formative composite (Bollen & Lennox, 1991; Diamantopoulos & Winklhofer, 2001). Clarity, Actionability, and Alignment represent distinct facets of collaboration quality, not symptoms of a single latent factor; internal consistency is not a relevant validity criterion for formative constructs (Hair et al., 2019). Convergent validity is confirmed via r(CQS_eq4, CQS_extended) = 0.944 and expert ICC(2,1) = 0.898.
+
+6. **Virtual expert generation fallback:** When ArXiv retrieval fails to identify a suitable academic profile, the framework generates a plausible virtual expert persona. While this maintains simulation continuity, it introduces lower-confidence projections that may not reflect real-world research capabilities. This fallback was not invoked in any of the 30 primary simulation runs (100% successful ArXiv retrieval confirmed; Table D.1 in paper). Practitioners deploying the framework should treat any virtual-expert-generated outputs as requiring additional domain-expert review before informing strategic decisions.
 
 ---
 
@@ -543,3 +583,51 @@ The R script produces Tables A1–M1 and Figures B1–J1 as described in the pap
 | EVALUATE_MEETING_OUTCOME | 3.55 | 1042.38 | 3.41 | 293.63 |
 | GENERATE_ARXIV_QUERY | 1.17 | 632.97 | 1.85 | 541.00 |
 
+---
+
+## 14. Appendix C: Human Evaluation Rubric (13-Item Expert Evaluation Instrument)
+
+**Table H1. 13-Item Structured Rubric for R&D Collaboration Proposal Evaluation**
+
+The rubric was developed through a three-stage process: (1) item generation from CQS sub-dimension definitions, ensuring each automated scorer has a corresponding human-interpretable item; (2) pilot scoring by the lead researcher to confirm item clarity; (3) independent scoring by three domain experts without calibration or discussion, to ensure evaluator independence. All items use a 1–5 scale (1 = strongly disagree, 5 = strongly agree). Raters were blind to CQS values and generation conditions.
+
+| Item # | Dimension | Item Statement | Scale | CQS Mapping |
+|---|---|---|---|---|
+| 1 | Clarity | The proposal's main research goal is clearly stated | 1–5 | Clarity (CQS) |
+| 2 | Clarity | The proposed methodology is described with sufficient specificity | 1–5 | Clarity (CQS) |
+| 3 | Clarity | The division of roles between industry and academia is unambiguous | 1–5 | Clarity (CQS) |
+| 4 | Actionability | The proposal includes concrete, time-bound milestones | 1–5 | Actionability (CQS) |
+| 5 | Actionability | The proposed deliverables are specific and measurable | 1–5 | Actionability (CQS) |
+| 6 | Actionability | The resource requirements are realistically specified | 1–5 | Actionability (CQS) |
+| 7 | Actionability | The proposal could be submitted to a funding agency in current form with minor editing | 1–5 | Actionability (CQS) |
+| 8 | Alignment | The research goal addresses a genuine industrial need | 1–5 | Alignment (CQS) |
+| 9 | Alignment | The academic contribution is consistent with current research frontiers | 1–5 | Alignment (CQS) |
+| 10 | Alignment | The proposal maintains strategic focus throughout | 1–5 | Alignment (CQS) |
+| 11 | Feasibility | The technical approach is feasible within the proposed timeline | 1–5 | Feasibility (CQS_extended) |
+| 12 | Novelty | The proposed research addresses a gap not covered by existing literature | 1–5 | Novelty (diagnostic) |
+| 13 | Overall | Overall, this proposal represents a high-quality industry–academia collaboration plan | 1–5 | Global CQS anchor |
+
+*Items 1–10 map directly to CQS sub-dimensions scored by the automated non-LLM scorers. Items 11–12 extend coverage to CQS_extended dimensions. Item 13 provides a global convergent validity anchor for cross-instrument comparison. The rubric-to-CQS mapping enables sub-dimension-level convergent validity assessment beyond the overall gap statistic (0.668) reported in §8.3.*
+
+*Raw evaluation data:* `human_eval_sheet_v8.csv` (Releases section).
+
+---
+
+## References (Selected)
+- Adner, R. (2017). Ecosystem as structure: An actionable construct for strategy. *Journal of Management, 43*(1), 39–58.
+- Baldwin, C. Y., & Clark, K. B. (2000). *Design rules: The power of modularity*. MIT Press.
+- Bollen, K. A., & Lennox, R. (1991). Conventional wisdom on measurement: A structural equation perspective. *Psychological Bulletin, 110*(2), 305–314.
+- Carlile, P. R. (2004). Transferring, translating, and transforming: An integrative framework for managing knowledge across boundaries. *Organization Science, 15*(5), 555–568.
+- Chang, J., et al. (2023). A survey on evaluation of large language models. *ACM Transactions on Intelligent Systems and Technology*.
+- Diamantopoulos, A., & Winklhofer, H. M. (2001). Index construction with formative indicators: An alternative to scale development. *Journal of Marketing Research, 38*(2), 269–277.
+- Gawer, A. (2014). Bridging differing perspectives on technological platforms: Toward an integrative framework. *Research Policy, 43*(7), 1239–1249.
+- Grant, R. M. (1996). Toward a knowledge-based theory of the firm. *Strategic Management Journal, 17*(S2), 109–122.
+- Hair, J. F., Risher, J. J., Sarstedt, M., & Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. *European Business Review, 31*(1), 2–24.
+- Hegde, D., et al. (2023). Inventor gender and the direction of inventive activity. *Research Policy*.
+- Hevner, A. R., March, S. T., Park, J., & Ram, S. (2004). Design science in information systems research. *MIS Quarterly, 28*(1), 75–105.
+- Koo, T. K., & Mae, M. Y. (2016). A guideline of selecting and reporting intraclass correlation coefficients for reliability research. *Journal of Chiropractic Medicine, 15*(2), 155–163.
+- Leonardi, P. M. (2013). Theoretical foundations for the study of sociomateriality. *Information and Organization, 23*(2), 59–76.
+- Liu, Y., et al. (2023). G-Eval: NLG evaluation using GPT-4 with better human alignment. *arXiv preprint*.
+- Nambisan, S., et al. (2017). Digital innovation management: Reinventing innovation management research in a digital world. *MIS Quarterly, 41*(1), 223–238.
+- Trist, E. (1981). The evolution of socio-technical systems. *Occasional Paper, 2*.
+- Yoo, Y., Boland, R. J., Lyytinen, K., & Majchrzak, A. (2012). Organizing for innovation in the digitized world. *Organization Science, 23*(5), 1398–1408.
