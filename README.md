@@ -210,7 +210,7 @@ A strong positive correlation was observed between token usage and execution tim
 
 Bottleneck nodes identified: `synthesize_final_report_node`, `execute_arxiv_search_and_create_persona_node`.
 
-![Fig1.png](Fig1.png)  
+![Fig1.png](Figures/Fig1.png)  
 **Fig. 1.** Correlation Between Token Usage and Execution Time Across Simulation Nodes
 
 ---
@@ -242,7 +242,7 @@ Bottleneck nodes identified: `synthesize_final_report_node`, `execute_arxiv_sear
 | synthesize_final_report_node | 26.41 | 0.09 | 11.20 | Low Variability |
 | generate_arxiv_query_node | 1.17 | 0.07 | 14.63 | Low Variability |
 
-![Fig2.png](Fig2.png)  
+![Fig2.png](Figures/Fig2.png)  
 **Fig. 2.** Node Performance Stability Categorized by Execution Time Variability
 
 ---
@@ -265,7 +265,7 @@ Bottleneck nodes identified: `synthesize_final_report_node`, `execute_arxiv_sear
 | evaluate_meeting_outcome_node | 3.55 | 60 | 7.89 | 42.60 | 1.58 |
 | **Total** | | | **61.51** | **332.16** | **12.31** |
 
-![Fig3.png](Fig3.png)  
+![Fig3.png](Figures/Fig3.png)  
 **Fig. 3.** Distribution of Computational Load: Total Execution Time Share and Token Share
 
 ---
@@ -276,7 +276,7 @@ Bottleneck nodes identified: `synthesize_final_report_node`, `execute_arxiv_sear
 **Formula 11. Complexity Score** = Z(mean_total) + Z(token_cv)  
 **Formula 12. Efficiency Score** = −Z(time_per_token)
 
-![Fig4.png](Fig4.png)  
+![Fig4.png](Figures/Fig4.png)  
 **Fig. 4.** Node Efficiency vs. Complexity Analysis
 
 **Phased Optimization Plan:**
@@ -514,10 +514,10 @@ The R script produces Tables A1–M1 and Figures B1–J1 as described in the pap
 | EVALUATE_MEETING_OUTCOME | 60 | 2.81 | 3.40 | 3.57 | 3.55 | 3.72 | 4.20 |
 | GENERATE_ARXIV_QUERY | 30 | 1.03 | 1.12 | 1.17 | 1.17 | 1.20 | 1.33 |
 
-![FigA1.png](FigA1.png)  
+![FigA1.png](Figures/FigA1.png)  
 **Fig. A.1.** Node-Level Execution Time Distribution Across Adaptive Multi-LLM Simulations
 
-![FigA2.png](FigA2.png)  
+![FigA2.png](Figures/FigA2.png)  
 **Fig. A.2.** Distribution of Input, Output, and Total Token Usage Across Agent Nodes
 
 ---
