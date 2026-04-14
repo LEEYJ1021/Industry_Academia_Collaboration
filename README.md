@@ -427,6 +427,7 @@ Industry_Academia_Collaboration/
 │
 ├── README.md                              ← This file
 ├── LangGraph.png                          ← Workflow diagram
+├── .gitattributes                         ← Track large file with LFS ([Releases section]/Final_Output.json)
 │
 ├── [Python — Core Simulation]
 │   ├── main_simulation_v8.py              ← Track A/B full experiment (GPT-4 / open-source)
