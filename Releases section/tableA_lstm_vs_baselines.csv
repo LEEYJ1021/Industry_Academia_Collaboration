@@ -1,0 +1,6 @@
+Method,Dir_Acc,Theil_U
+Naïve RW,0.0,0.901
+Naïve Trend,0.833,0.769
+Linear Reg.,0.833,0.839
+"ARIMA(1,1,0)",0.333,1.008
+Bayesian LSTM (reported),1.0,0.641

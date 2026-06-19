@@ -1,0 +1,5 @@
+Condition,N,Mean_CQS,BCa95_Lo,BCa95_Hi,Delta_CQS_vs_FP,Perm_p_CQS,Mean_CQS_ext,Delta_CQSext_vs_FP,Cohen_d
+Full_Pipeline,12,8.813,8.401,9.142,—,n/a,8.557,—,n/a
+C1_Single_Agent,12,8.141,7.23,8.961,-0.672,0.0615,7.671,-0.886,0.544
+C2_Retrieval_Only,12,8.309,7.623,8.873,-0.504,0.0676,7.795,-0.762,0.528
+C3_Multiagent_No_Persona,12,9.013,8.813,9.164,+0.200,0.1999,8.275,-0.282,-0.371
