@@ -1,0 +1,8 @@
+Entity type,Grounding source,LLM involvement,Example,Role in framework
+Real inventor–applicant pair,"WIPO PCT patent corpus (26,399 documents)",None — direct extraction,SHIMOTANI MITSUO (MITSUBISHI ELECTRIC CORP),Industrial expert persona base
+Synthetic industry persona,"Patent CPC codes, title list, linear weighted score",LLM synthesises role label and expertise description from patent data,'Notification Control and User Experience Expert',Industry agent in Phase 1 & 3 simulations
+ArXiv-derived academic persona,"ArXiv paper: title, authors, abstract","LLM synthesises persona name, affiliation, expertise from paper metadata",Dr. Anik Mallik (UC Berkeley) — from EPAM paper,Academic collaborator agent in Phase 3
+Virtual academic persona (fallback),Domain ontology only (no retrieved paper),Full LLM synthesis; no retrieved grounding,Invoked 0/30 times in Track A; not used in Track B,Continuity fallback only
+LLM facilitator,System prompt + meeting strategy (Table 4),Fully generative; constrained by structured prompt,Exploratory-Brainstorming facilitator in Phase 1,Dialogue orchestrator; does not contribute domain claims
+Discriminative evaluator (Track B),"Non-LLM models (DeBERTa, MiniLM, ST-MiniLM, Jaccard)",None — discriminative inference only,DeBERTa-base NLI for Clarity scoring,Post-hoc quality measurement; architecturally independent
+Human domain expert (evaluation),"Independent domain expertise (AI/ML, ITS/V2X, R&D policy)",None,"Rater A: Associate Prof. AI/ML, 12 years post-PhD",Convergent validity for 6 stratified proposals

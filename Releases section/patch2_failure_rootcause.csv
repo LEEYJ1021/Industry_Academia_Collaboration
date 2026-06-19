@@ -1,0 +1,5 @@
+Failure dimension,Root cause,Evidence,CQS impact
+Low Actionability (7.5 vs. mean 8.55),Greedy-Exploitation strategy applied to niche aviation+wireless domain,"Same pair with Consensus/Exploratory strategies: actionability=8.5, 8.5 (normal)",Primary driver (weight 0.4)
+Below-median Clarity (8.5 vs. mean 8.97),Narrow commercial framing → underspecified technical methodology,Geo-encryption focus without broader system architecture,Secondary driver (weight 0.4)
+Strategy-domain mismatch,Greedy strategy extracts one idea; domain needs integrative framing,H04B7 (wireless protocols) + H04L20 (aviation broadcast) require multi-protocol synthesis,Structural cause of both above
+Not failure of pipeline; failure of strategy-domain fit,Exploratory-Brainstorming on same pair produces normal CQS (8.978),"Run 3 (Exploratory): clarity=9.0, actionability=8.5, alignment=9.5",Confirms pipeline robustness; failure is localised
